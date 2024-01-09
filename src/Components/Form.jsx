@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../style/Form.css";
+import axios from 'axios';
 
 export default function Form() {
   const [inputs, setInputs] = useState({});
@@ -13,6 +14,13 @@ export default function Form() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(inputs);
+    axios.post('https://login-logout-api.onrender.com/fishing_form', inputs)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   };
 
   //     "password": "123456",
@@ -27,6 +35,7 @@ export default function Form() {
         <label>
           <span>שם משתמש</span>
           <input
+            autoComplete="on"
             type="text"
             name="username"
             value={inputs.username || ""}
@@ -36,6 +45,7 @@ export default function Form() {
         <label>
           <span>סיסמה</span>
           <input
+            autoComplete="on"
             type="password"
             name="age"
             value={inputs.age || ""}
