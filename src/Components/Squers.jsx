@@ -11,7 +11,7 @@ export default function Squers() {
     <>
       <div className="squersWrapper">
         {data.map((squer) => (
-          <div className="squers">
+          <div key={squer.header} className="squers">
             <h1>{squer.header}</h1>
             <h2>{squer.description}</h2>
           </div>

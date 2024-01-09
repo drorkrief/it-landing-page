@@ -93,26 +93,17 @@ body {
 body {
   background: #ebebeb;
 }
-ul {
-  /* width: 100%; */
+ul.headBar {
   margin: auto;
   flex-direction: row-reverse;
   display: flex;
-  /* justify-content: right; */
   align-items: stretch;
-  /* margin-right: 222px; */
 }
-li {
-  /* direction: ltr; */
-  /* list-style-type: none; */
+li.headBar {
   display: inline-block;
   align-self: center;
-  /* border: salmon 2px solid; */
-  /* padding-right: 5vw; */
 }
-/* header {
-  background: white;
-} */
+
 .burger {
   position: absolute;
   cursor: pointer;
