@@ -2,19 +2,20 @@ import { useState } from "react";
 import "../style/Form.css";
 import axios from 'axios';
 
-export default function Form() {
+export default function Form({query}) {
   const [inputs, setInputs] = useState({});
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
+    setInputs((values) => ({ ...values, [name]: value, query }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(inputs);
     axios.post('https://login-logout-api.onrender.com/fishing_form', inputs)
+    // axios.post('http://localhost:3033/fishing_form', inputs)
     .then(function (response) {
       console.log(response);
     })
