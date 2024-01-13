@@ -27,7 +27,7 @@ function App() {
     <>
       <Header isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
       <Drawer openBar={isDrawerOpen} />
-      <BodySec />
+      <BodySec query={query}/>
       {query && <UserDetected query={query}/>}
       <Footer/>
       {/* <h2>jsdncjnsd</h2> */}

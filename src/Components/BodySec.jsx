@@ -3,11 +3,11 @@ import ImgBackground from './ImgBackground'
 import Form from './Form'
 import Squers from './Squers'
 
-export default function BodySec() {
+export default function BodySec({query}) {
   return (<>
 <ImgBackground/>
 <Squers/>
-<Form/>
+<Form query={query}/>
 
   </>
 
