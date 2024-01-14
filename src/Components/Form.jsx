@@ -4,11 +4,13 @@ import axios from 'axios';
 
 export default function Form({query}) {
   const [inputs, setInputs] = useState({});
+  const [fornSent, setFornSent] = useState(false);
 
   const handleChange = (event) => {
+    const decodedstr = atob(query);
     const name = event.target.name;
     const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value, query }));
+    setInputs((values) => ({ ...values, [name]: value, decodedstr }));
   };
 
   const handleSubmit = (event) => {
@@ -18,6 +20,7 @@ export default function Form({query}) {
     // axios.post('http://localhost:3033/fishing_form', inputs)
     .then(function (response) {
       console.log(response);
+      setFornSent(true)
     })
     .catch(function (error) {
       console.log(error);
@@ -29,6 +32,11 @@ export default function Form({query}) {
   //     "email": "dror1krief@gmail.com",
   return (
     <div className="formcontainer">
+      {fornSent? 
+      <div style={{height:"50vw", width:"50vw", border:"red 5px solid",textAlign:"center", display:"block", fontSize:"22px"}}>
+        <span style={{fontWeight:"bolder"}}>תודה לך</span><br/>
+        <p>تم تصميم Coronis Fusion من أجل راحتك وتعزيز الإنتاجية، وهو مزود بميزات ذكية لتحسين الصورة وأدوات سير العمل. تساعد زاوية العرض الواسعة للشاشة بالإضافة إلى مهمة SoftGlow™ وإضاءة الحائط على تقليل إجهاد العين. بفضل SpotView، يمكن لأخصائيي الأشعة تحسين دقة الكشف بالإضافة إلى إنتاجية القراءة.</p>
+</div>:<>
       <div>
         <h1>מלא את הפרטים כאן כדי להתחיל עם התחברות מהירה ללא סיסמאות</h1>
       </div>
@@ -54,7 +62,7 @@ export default function Form({query}) {
           />
         </label>
         <input type="submit" value={"שלח"} />
-      </form>
+      </form></>}
     </div>
   );
 }
